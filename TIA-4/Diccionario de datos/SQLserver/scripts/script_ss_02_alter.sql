@@ -1,127 +1,227 @@
--- Primary Keys
-ALTER TABLE proyecto_curso
-ADD CONSTRAINT PK_proyecto_curso PRIMARY KEY (cod_proyecto, cod_curso);
-
-ALTER TABLE usuario_rol
-ADD CONSTRAINT PK_usuario_rol PRIMARY KEY (cod_usuario, cod_rol);
-
-ALTER TABLE rol_permiso
-ADD CONSTRAINT PK_rol_permiso PRIMARY KEY (cod_rol, cod_permiso);
-
-ALTER TABLE programa_academico_asignatura
-ADD CONSTRAINT PK_programa_academico_asignatura PRIMARY KEY (cod_programa, cod_asignatura);
-
-ALTER TABLE proyecto_orientacion_del_proyecto
-ADD CONSTRAINT PK_proyecto_orientacion_del_proyecto PRIMARY KEY (cod_proyecto, cod_orientacion);
-
-ALTER TABLE proyecto_era
-ADD CONSTRAINT PK_proyecto_era PRIMARY KEY (cod_proyecto, cod_era);
-
-ALTER TABLE curso_estudiante
-ADD CONSTRAINT PK_curso_estudiante PRIMARY KEY (cod_curso, cod_estudiante);
+-- NOT NULL Constraints
+ALTER TABLE proyecto
+ALTER COLUMN titulo_del_proyecto VARCHAR(255) NOT NULL;
 
 ALTER TABLE proyecto
-ADD CONSTRAINT PK_proyecto PRIMARY KEY (cod_proyecto);
+ALTER COLUMN objetivo_proyecto TEXT NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN cod_tipo_proyecto INT NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN cod_entregable INT NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN cod_evaluacion INT NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN cod_rep INT NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN fecha_inicio_proyecto DATE NOT NULL;
+
+ALTER TABLE proyecto
+ALTER COLUMN fecha_fin_proyecto DATE NOT NULL;
 
 ALTER TABLE tipo_proyecto
-ADD CONSTRAINT PK_tipo_proyecto PRIMARY KEY (cod_tipo_proyecto);
+ALTER COLUMN tipo_proyecto VARCHAR(10) NOT NULL;
 
 ALTER TABLE usuario
-ADD CONSTRAINT PK_usuario PRIMARY KEY (cod_usuario);
+ALTER COLUMN nombre1 VARCHAR(20) NOT NULL;
+
+ALTER TABLE usuario
+ALTER COLUMN apellido1 VARCHAR(20) NOT NULL;
+
+ALTER TABLE usuario
+ALTER COLUMN telefono1 VARCHAR(20) NOT NULL;
+
+ALTER TABLE usuario
+ALTER COLUMN correo_electronico VARCHAR(50) NOT NULL;
+
+ALTER TABLE usuario
+ALTER COLUMN nombre_ingreso_usuario VARCHAR(50) NOT NULL;
+
+ALTER TABLE usuario
+ALTER COLUMN contraseña_usuario VARCHAR(20) NOT NULL;
 
 ALTER TABLE rol
-ADD CONSTRAINT PK_rol PRIMARY KEY (cod_rol);
+ALTER COLUMN nombre_rol VARCHAR(20) NOT NULL;
+
+ALTER TABLE rol
+ALTER COLUMN descripcion_rol VARCHAR(100) NOT NULL;
 
 ALTER TABLE permiso
-ADD CONSTRAINT PK_permiso PRIMARY KEY (cod_permiso);
+ALTER COLUMN nombre_permiso VARCHAR(20) NOT NULL;
+
+ALTER TABLE permiso
+ALTER COLUMN descripcion_permiso VARCHAR(100) NOT NULL;
 
 ALTER TABLE estudiante
-ADD CONSTRAINT PK_estudiante PRIMARY KEY (cod_estudiante);
+ALTER COLUMN cod_Proyecto INT NOT NULL;
+
+ALTER TABLE estudiante
+ALTER COLUMN cod_usuario INT NOT NULL;
+
+ALTER TABLE estudiante
+ALTER COLUMN cod_programa_academico INT NOT NULL;
 
 ALTER TABLE docente
-ADD CONSTRAINT PK_docente PRIMARY KEY (cod_docente);
+ALTER COLUMN cod_usuario INT NOT NULL;
 
 ALTER TABLE curso
-ADD CONSTRAINT PK_curso PRIMARY KEY (cod_curso);
+ALTER COLUMN serie_curso VARCHAR(100) NOT NULL;
+
+ALTER TABLE curso
+ALTER COLUMN cod_asignatura INT NOT NULL;
+
+ALTER TABLE curso
+ALTER COLUMN cod_docente INT NOT NULL;
 
 ALTER TABLE invitado
-ADD CONSTRAINT PK_invitado PRIMARY KEY (cod_invitado);
+ALTER COLUMN cod_usuario INT NOT NULL;
+
+ALTER TABLE invitado
+ALTER COLUMN cod_institucion INT NOT NULL;
 
 ALTER TABLE programa_academico
-ADD CONSTRAINT PK_programa_academico PRIMARY KEY (cod_programa);
+ALTER COLUMN nombre_programa_academico VARCHAR(100) NOT NULL;
+
+ALTER TABLE programa_academico
+ALTER COLUMN cod_departamento INT NOT NULL;
+
+ALTER TABLE programa_academico_asignatura
+ALTER COLUMN cod_programa INT NOT NULL;
+
+ALTER TABLE programa_academico_asignatura
+ALTER COLUMN cod_asignatura INT NOT NULL;
 
 ALTER TABLE asignatura
-ADD CONSTRAINT PK_asignatura PRIMARY KEY (cod_asignatura);
+ALTER COLUMN nombre_asignatura VARCHAR(100) NOT NULL;
+
+ALTER TABLE asignatura
+ALTER COLUMN creditos_asignatura INT NOT NULL;
 
 ALTER TABLE era
-ADD CONSTRAINT PK_era PRIMARY KEY (cod_era);
+ALTER COLUMN numero_era INT NOT NULL;
+
+ALTER TABLE era
+ALTER COLUMN descripcion_era VARCHAR(500) NOT NULL;
 
 ALTER TABLE ira
-ADD CONSTRAINT PK_ira PRIMARY KEY (cod_ira);
+ALTER COLUMN descripcion_ira VARCHAR(500) NOT NULL;
+
+ALTER TABLE ira
+ALTER COLUMN porcentaje_dominio_ira INT NOT NULL;
+
+ALTER TABLE ira
+ALTER COLUMN cod_era INT NOT NULL;
 
 ALTER TABLE entregable
-ADD CONSTRAINT PK_entregable PRIMARY KEY (cod_entregable);
+ALTER COLUMN nombre_entregable VARCHAR(200) NOT NULL;
+
+ALTER TABLE entregable
+ALTER COLUMN cod_tipo_entregable INT NOT NULL;
+
+ALTER TABLE entregable
+ALTER COLUMN cod_evaluacion INT NOT NULL;
+
+ALTER TABLE entregable
+ALTER COLUMN descripcion_entregable VARCHAR(500) NOT NULL;
+
+ALTER TABLE entregable
+ALTER COLUMN cod_proyecto INT NOT NULL;
 
 ALTER TABLE tipo_entregable
-ADD CONSTRAINT PK_tipo_entregable PRIMARY KEY (cod_tipo_entregable);
+ALTER COLUMN nombre_tipo_entregable VARCHAR(200) NOT NULL;
+
+ALTER TABLE tipo_entregable
+ALTER COLUMN descripcion_tipo_entregable VARCHAR(500) NOT NULL;
 
 ALTER TABLE evaluacion
-ADD CONSTRAINT PK_evaluacion PRIMARY KEY (cod_evaluacion);
+ALTER COLUMN descripcion_evaluacion VARCHAR(500) NOT NULL;
+
+ALTER TABLE evaluacion
+ALTER COLUMN cod_evaluador INT NOT NULL;
+
+ALTER TABLE evaluacion
+ALTER COLUMN ponderacion_evaluacion DECIMAL(4,2) NOT NULL;
 
 ALTER TABLE rep
-ADD CONSTRAINT PK_rep PRIMARY KEY (cod_rep);
+ALTER COLUMN descripcion_rep VARCHAR(500) NOT NULL;
+
+ALTER TABLE rep
+ALTER COLUMN cod_proyecto INT NOT NULL;
 
 ALTER TABLE orientacion_del_proyecto
-ADD CONSTRAINT PK_orientacion_del_proyecto PRIMARY KEY (cod_orientacion);
+ALTER COLUMN categoria_orientacion_pryecto VARCHAR(200) NOT NULL;
+
+ALTER TABLE orientacion_del_proyecto
+ALTER COLUMN descripcion_orientacion VARCHAR(500) NOT NULL;
+
+ALTER TABLE proyecto_orientacion_del_proyecto
+ALTER COLUMN cod_proyecto INT NOT NULL;
+
+ALTER TABLE proyecto_orientacion_del_proyecto
+ALTER COLUMN cod_orientacion INT NOT NULL;
 
 ALTER TABLE evaluadores
-ADD CONSTRAINT PK_evaluadores PRIMARY KEY (cod_evaluador);
+ALTER COLUMN especialidad_evaluador VARCHAR(200) NOT NULL;
+
+ALTER TABLE evaluadores
+ALTER COLUMN cod_institucion VARCHAR(200) NOT NULL;
+
+ALTER TABLE evaluadores
+ALTER COLUMN cod_usuario INT NOT NULL;
 
 ALTER TABLE departamento
-ADD CONSTRAINT PK_departamento PRIMARY KEY (cod_departamento);
+ALTER COLUMN cod_facultad INT NOT NULL;
+
+ALTER TABLE departamento
+ALTER COLUMN nombre_departamento VARCHAR(200) NOT NULL;
 
 ALTER TABLE facultad
-ADD CONSTRAINT PK_facultad PRIMARY KEY (cod_facultad);
+ALTER COLUMN nombre_facultad VARCHAR(200) NOT NULL;
+
+ALTER TABLE facultad
+ALTER COLUMN institucion VARCHAR(10) NOT NULL;
 
 ALTER TABLE institucion
-ADD CONSTRAINT PK_institucion PRIMARY KEY (cod_institucion);
+ALTER COLUMN nombre_institucion VARCHAR(100) NOT NULL;
 
--- Foreign Keys
-ALTER TABLE proyecto_curso
-ADD CONSTRAINT FK_proyecto_curso_proyecto FOREIGN KEY (cod_proyecto) REFERENCES proyecto(cod_proyecto);
-
-ALTER TABLE proyecto_curso
-ADD CONSTRAINT FK_proyecto_curso_curso FOREIGN KEY (cod_curso) REFERENCES curso(cod_curso);
+ALTER TABLE institucion
+ALTER COLUMN tipo_institucion VARCHAR(100) NOT NULL;
 
 ALTER TABLE usuario_rol
-ADD CONSTRAINT FK_usuario_rol_usuario FOREIGN KEY (cod_usuario) REFERENCES usuario(cod_usuario);
+ALTER COLUMN cod_usuario INT NOT NULL;
 
 ALTER TABLE usuario_rol
-ADD CONSTRAINT FK_usuario_rol_rol FOREIGN KEY (cod_rol) REFERENCES rol(cod_rol);
+ALTER COLUMN cod_rol INT NOT NULL;
 
 ALTER TABLE rol_permiso
-ADD CONSTRAINT FK_rol_permiso_rol FOREIGN KEY (cod_rol) REFERENCES rol(cod_rol);
+ALTER COLUMN cod_rol INT NOT NULL;
 
 ALTER TABLE rol_permiso
-ADD CONSTRAINT FK_rol_permiso_permiso FOREIGN KEY (cod_permiso) REFERENCES permiso(cod_permiso);
-
-ALTER TABLE programa_academico_asignatura
-ADD CONSTRAINT FK_programa_academico_asignatura_programa_academico FOREIGN KEY (cod_programa) REFERENCES programa_academico(cod_programa);
-
-ALTER TABLE programa_academico_asignatura
-ADD CONSTRAINT FK_programa_academico_asignatura_asignatura FOREIGN KEY (cod_asignatura) REFERENCES asignatura(cod_asignatura);
-
-ALTER TABLE proyecto_orientacion_del_proyecto
-ADD CONSTRAINT FK_proyecto_orientacion_del_proyecto_proyecto FOREIGN KEY (cod_proyecto) REFERENCES proyecto(cod_proyecto);
-
-ALTER TABLE proyecto_orientacion_del_proyecto
-ADD CONSTRAINT FK_proyecto_orientacion_del_proyecto_orientacion_del_proyecto FOREIGN KEY (cod_orientacion) REFERENCES orientacion_del_proyecto(cod_orientacion);
+ALTER COLUMN cod_permiso INT NOT NULL;
 
 ALTER TABLE proyecto_era
-ADD CONSTRAINT FK_proyecto_era_proyecto FOREIGN KEY (cod_proyecto) REFERENCES proyecto(cod_proyecto);
+ALTER COLUMN cod_proyecto INT NOT NULL;
 
 ALTER TABLE proyecto_era
-ADD CONSTRAINT FK_proyecto_era_era FOREIGN KEY (cod_era) REFERENCES era(cod_era);
+ALTER COLUMN cod_era INT NOT NULL;
 
 ALTER TABLE curso_estudiante
-ADD CONSTRAINT FK_curso_estudiante_curso FOREIGN KEY (cod_curso) REFERENCES curso
+ALTER COLUMN cod_curso INT NOT NULL;
+
+ALTER TABLE curso_estudiante
+ALTER COLUMN cod_estudiante INT NOT NULL;
+
+-- CHECK Constraints
+ALTER TABLE ira
+ADD CONSTRAINT CK_ira_porcentaje_dominio CHECK (porcentaje_dominio_ira >= 0 AND porcentaje_dominio_ira <= 100);
+
+ALTER TABLE evaluacion
+ADD CONSTRAINT CK_evaluacion_ponderacion CHECK (ponderacion_evaluacion >= 0 AND ponderacion_evaluacion <= 5);
+
+-- DEFAULT Constraints
+ALTER TABLE facultad
+ADD CONSTRAINT DF_facultad_institucion DEFAULT 'IUPB' FOR institucion;
