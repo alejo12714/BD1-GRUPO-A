@@ -1,1 +1,2 @@
-# BD1-GRUPO-A
+Integrantes del proyecto>
+Diago Alejandro Mazo Espinal
